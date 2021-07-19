@@ -1,0 +1,330 @@
+body
+	background-color #f5f6fa
+	font-size 14px;
+	font-family: 'Roboto', sans-serif;
+
+h2,h3,h4,h5,ul,body,html
+	padding 0px
+	margin 0px
+
+a
+	text-decoration none
+	&:hover
+		text-decoration none
+.form-control
+	&:focus
+		box-shadow none
+		outline none
+.mtop16
+	margin-top 16px
+
+.mb32
+	margin-bottom 32px
+.mb16
+	margin-bottom 16px
+
+.wrapper
+	min-height 100vh
+	overflow hidden
+	.col1
+		float left
+		position relative
+		z-index 999
+		width 17%
+	.col2
+		float left
+		width 83%
+
+.sidebar
+	background-color #fff
+	min-height 100vh
+	.section-top
+		background-color #2caaff
+		box-shadow 0 0.5rem 1rem rgba(0, 0, 0, 0.15)
+	.logo
+		display block
+		margin 0px auto
+		padding-top 24px
+		width 60%
+	.user
+		color #fff !important
+		padding 16px
+		a
+			color #fff
+			font-size 1.2em
+	.main
+		display block
+		margin-top 8px
+		ul
+			li
+				margin-bottom 4px
+				a
+					color #8998AC !important
+					display block
+					font-size 1.1em
+					padding 12px 12px
+					i
+						margin-right 10px
+					&:hover
+						background-color #2caaff
+						box-shadow 0 0.5rem 1rem rgba(0, 0, 0, 0.15)
+						color #fff !important
+						text-decoration none
+				a.active
+					background-color #2caaff
+					box-shadow 0 0.5rem 1rem rgba(0, 0, 0, 0.15)
+					color #fff !important
+					text-decoration none
+
+.navbar
+	background-color #2caaff
+	a
+		color #fff !important
+.page
+	padding-top 16px
+	padding-bottom 16px
+	.breadcrumb
+		background-color #fff
+		box-shadow 0 0.5rem 1rem rgba(0, 0, 0, 0.10) !important
+		.breadcrumb-item
+			a
+				&:hover
+					text-decoration none !important
+	.panel
+		background-color #fff
+		border-radius 6px
+		border-bottom 2px solid #2caaff
+		width 100%
+		.header
+			border-bottom 1px solid #e8e8e8
+			h2.title
+				display inline-block
+				color #19213d
+				font-size 1.1em
+				padding 12px 16px
+			ul
+				display inline-block
+				float right
+				margin-right 12px
+				li
+					display inline-block
+					position relative
+					a
+						color #333
+						display inline-block
+						padding 10px
+						&:hover
+							background-color #f6f6f6
+							color #222
+							text-decoration none
+						i
+							 color  #2caaff
+					ul
+						background-color #fff
+						border 1px solid #f0f0f0
+						display none
+						float none
+						position absolute
+						right -16px
+						width 200px
+						li
+							display inline-block
+							border-bottom 1px solid #f0f0f0
+							width 100%
+							&:last-child
+								border-bottom 0px
+							a
+								display block
+								width value
+					&:hover
+						ul
+							display block
+		.inside
+			padding 16px
+			.nav
+				.nav-link
+					border 1px solid #2caaff
+					margin-right 8px
+					&:hover
+						background-color #2caaff
+						color #fff
+			.form_search
+				display none
+				margin-bottom 16px
+				.btn
+					width 100%
+			.big_count
+				display block
+				font-size 2em
+				text-align center
+				width 100%
+		.list-group
+			border-radius 0px !important
+			a.list-group-item
+				border-left 0px
+				border-right 0px
+				.badge
+					float right
+				&:first-child
+					border-top 0px
+				&:last-child
+					border-bottom 0px
+			a.active
+				.badge
+					background-color #fff !important
+					color #333
+
+.opts
+	overflow hidden
+	a
+		align-items center
+		display flex
+		border-radius 8px
+		cursor pointer
+		font-size .9em
+		float left
+		justify-content center
+		margin-right 8px
+		height 38px
+		width 38px
+	a.edit
+		background-color #4360BB
+		color #fff
+	a.inventory
+		background-color #FD5D36
+		color #fff
+	a.deleted
+		background-color #E31330
+		color #fff
+	a.restore
+		background-color #3BC504
+		color #fff
+
+.product_gallery
+	overflow hidden
+	.btn-submit
+		display block
+		margin-right 1%
+		width 100%
+		a
+			border 1px dashed #6666
+			border-radius 4px
+			color #333
+			display block
+			font-size 1.5em
+			text-align center
+			padding 12px
+			width 100%
+			&:hover
+				background-color #2caaff
+				color #fff
+	.tumbs
+		overflow hidden
+		.tumb
+			float left
+			margin-top 16px
+			position relative
+			width 48%
+			a
+				background-color rgba(0,0,0, .5)
+				border-radius 50%
+				display inline-block
+				color #fff
+				padding 6px 10px
+				position absolute
+				bottom 8px
+				right 8px
+			img
+				border-radius 4px
+				width 100%
+			&:nth-child(odd)
+				margin-right 4%
+
+.page_user
+	.mini_profile
+		.avatar
+			display block
+			margin 0px auto
+			border-radius 50%
+			width 150px
+		.info
+			background-color #fff
+			span
+				display block
+				font-size 1.1em
+				width 100%
+			span.title
+				font-weight bold
+				margin-top 16px
+		.btn
+			margin-top 16px
+			width 100%
+
+.alert
+	ul
+		list-style-position inside
+		margin-left 16px
+
+.slider_content
+	background-color #f9f9f9
+	border-radius 4px
+	padding 16px
+	h2
+		font-size 1.4em
+		margin 0px
+		padding 0px
+	h1
+		font-size 1.6em
+		font-weight bold
+
+.order
+	.profile
+		.photo
+			display block
+			width 100%
+			img
+				display block
+				margin 0px auto
+				width 96px
+		.info
+			ul
+				list-style none
+				li
+					margin-bottom 4px
+.mcswitch
+	background-color #f0f0f0
+	border-radius 20.4px
+	overflow hidden
+	padding 4px
+	a
+		border-radius 16.4px
+		display block
+		float left
+		font-size .8em
+		text-align center
+		padding 8px
+		width 49%
+		&:hover
+			background-color #fff
+		&:last-child
+			margin-left 2%
+	a.active
+		background-color #2caaff
+		color #fff
+.payments_methods
+	a
+		border-radius 6px
+		border 1px solid #f6f6f6
+		color #333
+		display block
+		margin-bottom 6px
+		padding 8px 18px
+		width 100%
+		&:last-child
+			margin-bottom 0px
+		&:hover
+			background-color #2caaff
+			color #fff
+	a.active
+		background-color #2caaff
+		color #fff
