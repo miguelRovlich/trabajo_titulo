@@ -64,13 +64,13 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="{{ url('/') }}" class="nav-link"><i class="fas fa-id-card-alt"></i> <span>Sobre Nosotros</span></a>
+						<a href="{{ url('/about') }}" class="nav-link"><i class="fas fa-id-card-alt"></i> <span>Sobre Nosotros</span></a>
 					</li>
 					<li class="nav-item">
 						<a href="{{ url('/') }}" class="nav-link"><i class="far fa-envelope-open"></i> <span>Contacto</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="{{ url('/cart') }}" class="nav-link lk-cart"><i class="fas fa-shopping-cart"></i>0</a>
+						<a href="{{ url('/cart') }}" class="nav-link lk-cart"><i class="fas fa-shopping-cart"></i></a>
 					</li>
 					@if(Auth::guest())
 					<li class="nav-item link-acc">
@@ -88,7 +88,7 @@
 						</a>
 						<ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
 							@if(Auth::user()->role == "1")
-							<li>
+							<li>	
 								<a class="dropdown-item" href="{{ url('/admin') }}">
 									<i class="fas fa-chalkboard-teacher"></i> Administración
 								</a>
@@ -154,8 +154,10 @@
 		<div class="container">
 			@yield('content')
 		</div>
-	</div>
 
+		<footer>
+			@yield('footer')
+		</footer>
 	
 </body>
 </html>

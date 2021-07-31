@@ -53,8 +53,8 @@
 					<div class="form-file">
 					{!! Form::file('icon', ['class' => 'form-file-input', 'required','id' => 'customFile', 'accept' => 'image/*']) !!}
 					<label class="form-file-label" for="customFile">
-						<span class="form-file-text">Choose file...</span>
-						<span class="form-file-button">Browse</span>
+						<span class="form-file-text">Seleccionar Archivo...</span>
+						<span class="form-file-button">Buscar</span>
 					</label>
 					</div>
 
@@ -88,9 +88,7 @@
 							@foreach($cats as $cat)
 							<tr>
 								<td>
-									@if(!is_null($cat->icon))
-									<img src="{{ getUrlFileFromUploads($cat->icon) }}" class="img-fluid">
-									@endif
+									
 								</td>
 								<td>{{ $cat->name }}</td>
 								<td>

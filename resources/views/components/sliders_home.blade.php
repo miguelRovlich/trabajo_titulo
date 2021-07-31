@@ -12,7 +12,7 @@
 				</div>
 			</div>
 			<div class="col-md-5 col-12">
-				<img src="{{ url('/uploads/'.$slider->file_path.'/'.$slider->file_name) }}" class="img-fluid">
+				<img src="{{ url('/uploads/'.$slider->file_name) }}" class="img-fluid">
 			</div>
 		</div>
 	</div>

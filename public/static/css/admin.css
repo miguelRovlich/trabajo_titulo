@@ -1,7 +1,7 @@
 body {
   background-color: #f5f6fa;
   font-size: 14px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 h2,
 h3,
@@ -249,6 +249,33 @@ a:hover {
   background-color: #3bc504;
   color: #fff;
 }
+
+.opts a.edit:hover {
+  color: #4360bb;
+  background-color: #fff;
+  
+  border: 1px solid #4360bb;
+}
+.opts a.inventory:hover {
+  color: #fd5d36;
+  background-color: #fff;
+  
+  border: 1px solid #fd5d36;
+}
+.opts a.deleted:hover {
+  color: #e31330;
+  background-color: #fff;
+
+  border: 1px solid #e31330;
+}
+.opts a.restore:hover {
+  color: #3bc504;
+  background-color: #fff;
+  border: 1px solid #3bc504;
+
+}
+
+
 .product_gallery {
   overflow: hidden;
 }

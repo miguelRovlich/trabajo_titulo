@@ -61,25 +61,19 @@
 				<thead>
 					<tr>
 						<td><strong>ID</strong></td>
-						<td></td>
 						<td><strong>Nombre</strong></td>
 						<td><strong>Precio Min</strong></td>
-						<td></td>
+						<td><strong>Opciones</strong></td>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach($products as $p)
 					<tr>
 						<td width="50">{{ $p->id }}</td>
-						<td width="48">
-							<a href="{{ url('/uploads/'.$p->file_path.'/'.$p->image) }}" data-fancybox="gallery">
-								<img src="{{ getUrlFileFromUploads($p->image) }}" width="48">
-							</a>
-						</td>
 						<td>
 							<p style="margin-bottom: 0px;">{{ $p->name }} @if($p->status == "0") <i class="fas fa-eraser" data-toggle="tooltip" data-placement="top" title="Estado: Borrador"></i> @endif</p>
 							
-							<p><small><i class="far fa-folder-open"></i> {{ $p->cat->name }} @if($p->subcategory_id != "0") <i class="fas fa-angle-double-right"></i> {{ $p->getSubcategory->name }} @endif</small></p>
+							{{-- <p><small><i class="far fa-folder-open"></i> {{ $p->cat->name }} @if($p->subcategory_id != "0") <i class="fas fa-angle-double-right"></i> {{ $p->getSubcategory->name }} @endif</small></p> --}}
 						</td>
 						<td>
 							{{ config('madecms.currency') }} {{ $p->price }}

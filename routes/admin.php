@@ -67,6 +67,10 @@
  	Route::get('/order/{order}/view', 'Admin\OrderController@getOrder')->name('order_view');
  	Route::post('/order/{order}/view', 'Admin\OrderController@postOrderStatusUpdate')->name('order_view');
 
+	 // Reparaciones
+
+	Route::get('/repairs/all','Admin\RepairController@getHome');
+ 	
  	// Javascript Request
  	Route::get('/md/api/load/subcategories/{parent}', 'Admin\ApiController@getSubCategories');
  });

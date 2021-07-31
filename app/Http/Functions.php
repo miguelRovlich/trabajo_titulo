@@ -24,6 +24,18 @@ function getModulesArray(){
 	return $a;
 }
 
+
+function getRegiones(){
+	$a = [
+		'0' => 'Productos',
+		'1' => 'Blog'
+	];
+
+	return $a;
+}
+
+
+
 function getUrlFileFromUploads($file, $size = null){
 	if(!is_null($file)):
 		$file = json_decode($file, true);

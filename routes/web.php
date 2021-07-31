@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'ContentController@getHome')->name('home');
+Route::get('/about', 'AboutController@main')->name('about');
+Route::get('/contact', 'ContactController@main')->name('contact');
+
 
 // Module Cart
 Route::get('/cart', 'CartController@getCart')->name('cart');

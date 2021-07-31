@@ -43,12 +43,12 @@ return [
         ],
         'uploads' => [
             'driver' => 'local',
-            'root' => config('cms.server_uploads_paths'),
+            'root' => "C:/Users/migue/Downloads/madecms/public",
             'visibility' => 'public',
         ],
         'uploads_user' => [
             'driver' => 'local',
-            'root' => config('cms.server_uploads_user_paths'),
+            'root' => "C:/Users/migue/Downloads/madecms/public",
         ],
 
         's3' => [

@@ -38,11 +38,11 @@ class SliderController extends Controller
     	if($validator->fails()):
     		return back()->withErrors($validator)->with('message', 'Se ha producido un error.')->with('typealert', 'danger');
     	else:
-    		$path = '/'.date('Y-m-d');
+    		$path = '/';
             $fileExt = trim($request->file('img')->getClientOriginalExtension());
             $upload_path = Config::get('filesystems.disks.uploads.root');
             $name = Str::slug(str_replace($fileExt, '', $request->file('img')->getClientOriginalName()));
-            $filename = rand(1,999).'-'.$name.'.'.$fileExt;
+            $filename = $name.'.'.$fileExt;
     		$slider = new Slider;
     		$slider->user_id = Auth::id();
     		$slider->status = $request->input('visible');

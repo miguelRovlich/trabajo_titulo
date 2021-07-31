@@ -16,7 +16,6 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3">
-			@if(kvfj(Auth::user()->permissions, 'coverage_add'))
 			<div class="panel shadow">
 				<div class="header">
 					<h2 class="title"><i class="fas fa-plus"></i> Agregar ciudad para envios</h2>
@@ -55,7 +54,6 @@
 					
 				</div>
 			</div>
-			@endif
 		</div>
 
 		<div class="col-md-9">
@@ -68,7 +66,7 @@
 					<table class="table mtop16">
 						<thead>
 							<tr>
-								<td><strong>Estatus</strong></td>
+								<td><strong>Estado</strong></td>
 								<td><strong>Ciudad</strong></td>
 								<td><strong>Valor del envió</strong></td>
 								<td><strong>Entrega estimada</strong></td>
