@@ -39,7 +39,7 @@
 							<tr>
 								<td>
 									@if(!is_null($cat->icon))
-									<img src="{{ getUrlFileFromUploads($cat->icon) }}" class="img-fluid">
+									{{-- <img src="{{ getUrlFileFromUploads($cat->icon) }}" class="img-fluid"> --}}
 									@endif
 								</td>
 								<td>{{ $cat->name }}</td>

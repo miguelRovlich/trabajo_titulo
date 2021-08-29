@@ -96,7 +96,7 @@ nav .navbar-toggler:focus {
 }
 nav .navbar-nav li.nav-item a.nav-link {
   border-bottom: 2px solid #fff;
-  color: rgba(41, 39, 39, 0.418);
+  color: #242121;
   font-size: 0.9em;
   margin-right: 4px;
   margin-bottom: 1px;
@@ -881,6 +881,13 @@ nav .navbar-nav li.link-user a:hover {
   background-color: #d93f5d;
   color: #fff;
 }
+
+.p-uwu{
+    font-size: 1.3em;
+    font-weight: 700;
+    text-align: center;
+    color: #181717;
+}
 .cart .btn-dark {
   font-size: 0.8em;
   color: #fff !important;
@@ -1102,6 +1109,10 @@ nav .navbar-nav li.link-user a:hover {
   width: 49%;
 }
 .mcswitch a:hover {
+  background-color: #fff;
+}
+
+.mcard {
   background-color: #fff;
 }
 .mcswitch a:last-child {

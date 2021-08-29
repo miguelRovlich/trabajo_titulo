@@ -14,7 +14,7 @@
 		<div class="col-md-9">
 			<div class="panel shadow">
 				<div class="header">
-					<h2 class="title"><i class="far fa-edit"></i> Edit producto</h2>
+					<h2 class="title"><i class="far fa-edit"></i> Editar producto</h2>
 				</div>
 
 				<div class="inside">
@@ -60,7 +60,7 @@
 								<span class="input-group-text" id="basic-addon1">
 									<i class="far fa-keyboard"></i>
 								</span>
-								{!! Form::number('price', $p->price, ['class' => 'form-control', 'min' => '0.00', 'step' => 'any']) !!}
+								{!! Form::number('price', 0, ['class' => 'form-control', 'min' => '0', 'step' => 'any']) !!}
 							</div>
 						</div>
 

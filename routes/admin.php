@@ -68,8 +68,9 @@
  	Route::post('/order/{order}/view', 'Admin\OrderController@postOrderStatusUpdate')->name('order_view');
 
 	 // Reparaciones
-
-	Route::get('/repairs/all','Admin\RepairController@getHome');
+	//admin/repairs/add
+	Route::get('/repairs/all','Admin\RepairController@getHome')->name("reparir");
+	Route::post('/repairs/add', 'Admin\RepairController@postRepairAdd')->name("reparir-add");
  	
  	// Javascript Request
  	Route::get('/md/api/load/subcategories/{parent}', 'Admin\ApiController@getSubCategories');

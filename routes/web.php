@@ -14,6 +14,7 @@
 Route::get('/', 'ContentController@getHome')->name('home');
 Route::get('/about', 'AboutController@main')->name('about');
 Route::get('/contact', 'ContactController@main')->name('contact');
+Route::post('/contact/add', 'ContactController@postContactAdd')->name('contact_add');
 
 
 // Module Cart

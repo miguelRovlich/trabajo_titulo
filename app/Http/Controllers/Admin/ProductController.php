@@ -44,13 +44,14 @@ class ProductController extends Controller
 
     public function postProductAdd(Request $request){
         $rules = [
-            'name' => 'required',
+            'name' => 'required|unique:products,name',
             'img' => 'required',
             'content' => 'required'
         ];
 
         $messages = [
             'name.required' => 'El nombre del producto es requerido',
+            'name.unique' => 'El nombre del producto debe ser unico',
             'img.required' => 'Seleccione una imagen destacada',
             'img.image' => 'El archivo no es una imagen',
             'content.required' => 'Ingrese una descripcion del producto'

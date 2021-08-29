@@ -57,7 +57,7 @@
 									<p><strong>Opciones del producto:</strong></p>
 									<ul id="inventory">
 										@foreach($product->getInventory as $inventory)
-										<li><a href="#" class="inventory" id="inventory_{{ $inventory->id }}" data-inventory-id="{{ $inventory->id }}">{{ $inventory->name }} - <span class="price">{{ Config::get('madecms.currency').number_format($inventory->price, 2, '.',',') }}</span></a></li>
+										<li><a href="#" class="inventory" id="inventory_{{ $inventory->id }}" data-inventory-id="{{ $inventory->id }}">{{ $inventory->name }} - <span class="price">{{ Config::get('madecms.currency').number_format($inventory->price) }}</span></a></li>
 										@endforeach
 									</ul>
 								</div>

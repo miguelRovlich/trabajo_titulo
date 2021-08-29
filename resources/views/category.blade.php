@@ -36,7 +36,7 @@
 					<li>
 						<a href="{{ url('/store/category/'.$cat->id.'/'.$cat->slug) }}">
 							{{ $cat->name }}
-							<img src="{{ getUrlFileFromUploads($cat->icon) }}" alt="{{ $cat->name }}"> {{ $cat->name }}
+							{{-- <img src="{{ getUrlFileFromUploads($cat->icon) }}" alt="{{ $cat->name }}"> {{ $cat->name }} --}}
 						</a>
 					</li>
 					@endforeach

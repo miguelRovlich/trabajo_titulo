@@ -46,9 +46,9 @@
 				<a href="{{ url('/admin/users/all') }}" class="lk-user_list lk-user_view lk-user_permissions"><i class="fas fa-user-friends"></i> Usuarios</a>
 			</li>
 			
-			<li>
+			{{-- <li>
 				<a href="{{ url('/admin/repairs/all') }}" class="lk-user_list lk-user_view lk-user_permissions"><i class="fas fa-tools"></i> Reparaciones</a>
-			</li>
+			</li> --}}
 
 			<li>
 				<a href="{{ url('/admin/settings') }}" class="lk-settings"><i class="fas fa-cogs"></i> Configuraciones</a>

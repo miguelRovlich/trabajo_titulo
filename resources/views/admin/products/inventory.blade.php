@@ -47,7 +47,7 @@
 						<span class="input-group-text" id="basic-addon1">
 							{{ config('madecms.currency') }}.
 						</span>
-						{!! Form::number('price', 1.00, ['class' => 'form-control', 'min' => '1', 'step' => 'any']) !!}
+						{!! Form::number('price', 1, ['class' => 'form-control', 'min' => '1', 'step' => 'any']) !!}
 					</div>
 
 					<label for="limited" class="mtop16">Limíte de inventario:</label>

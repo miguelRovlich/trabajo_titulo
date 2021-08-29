@@ -30,7 +30,7 @@ class SliderController extends Controller
 
     	$messages = [
     		'name.required' => 'El nombre del slider es requerido.',
-    		'img.required' => 'Selecciones una imagen para el Slider.',
+    		'img.required' => 'Seleccione una imagen para el Slider.',
     		'content.required' => 'El contenido del slider es requerido.',
     		'sorder.required' => 'Es necesario definir un orden de aparición.',
     	];

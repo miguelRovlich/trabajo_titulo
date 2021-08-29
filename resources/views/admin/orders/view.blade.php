@@ -100,7 +100,7 @@
 								@foreach($order->getItems as $item)
 								<tr>
 									<td>
-										<img src="{{ url('/uploads/'.$item->getProduct->file_path.'/t_'.$item->getProduct->image) }}" class="img-fluid rounded">
+										{{-- <img src="{{ url('/uploads/'.$item->getProduct->file_path.'/t_'.$item->getProduct->image) }}" class="img-fluid rounded"> --}}
 									</td>
 									<td>
 										<a href="{{ url('/product/'.$item->getProduct->id.'/'.$item->getProduct->slug) }}">

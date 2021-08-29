@@ -80,7 +80,7 @@ class CartController extends Controller
             $shipping_method = Config::get('cms.shipping_method');
 
             if($shipping_method == "0"):
-                $price = '0.00';
+                $price = '0';
             endif;
 
             if($shipping_method == "1"):
@@ -100,7 +100,7 @@ class CartController extends Controller
 
             if($shipping_method == "3"):
                 if($order->getSubtotal() >= Config::get('cms.shipping_amount_min')):
-                    $price = '0.00';
+                    $price = '0';
                 else:
                     $price = Config::get('cms.shipping_default_value');
                 endif;
@@ -114,7 +114,7 @@ class CartController extends Controller
             $order->total = $order->getSubtotal() + $price;
             $order->save();
         else:
-            $price = "0.00";
+            $price = "0";
             $order->total = $order->getSubtotal();
             $order->save();
         endif;
