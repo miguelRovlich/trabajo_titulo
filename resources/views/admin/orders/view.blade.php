@@ -138,7 +138,6 @@
 							</tbody>
 						</table>
 
-						@if(kvfj(Auth::user()->permissions, 'orders_change_status'))
 						<div class="order_status mtop16">
 							@if($order->status == '6' || $order->status == '100')
 							{!! Form::open(['url' => '#', 'disabled']) !!}
@@ -168,7 +167,7 @@
 							</div>
 						{!! Form::close() !!}
 						</div>
-						@endif
+				
 					</div>
 				</div>
 			</div>

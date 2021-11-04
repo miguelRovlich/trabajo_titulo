@@ -8,7 +8,7 @@ return [
 'currency' => 'CLP',
 'shop_min_amount' => '100',
 'shipping_method' => '0',
-'shipping_default_value' => '50.00',
+'shipping_default_value' => '5000',
 'shipping_amount_min' => '500',
 'to_go' => '0',
 'social_facebook' => 'https://www.facebook.com/nibble.cl/',
@@ -22,7 +22,7 @@ return [
 'payment_method_credit_card' => '0',
 'products_per_page' => '5',
 'products_per_page_random' => '10',
-'server_uploads_paths' => 'C:\Users\migue\Downloads\madecms/public',
+'server_uploads_paths' => 'C:\Users\migue\Downloads\madecms',
 'server_uploads_user_paths' => 'C:\Users\migue\Downloads\madecms\public',
 'server_webapp_path' => 'C:\Users\migue\Downloads\madecms',
 ]
