@@ -14,13 +14,11 @@
 		<div class="header">
 			<h2 class="title"><i class="fas fa-boxes"></i> Productos</h2>
 			<ul>
-				@if(kvfj(Auth::user()->permissions, 'product_add'))
 				<li>
 					<a href="{{ url('/admin/product/add') }}">
 						<i class="fas fa-plus"></i> Agregar producto
 					</a>
 				</li>
-				@endif
 				<li>
 					<a href="#">Filtrar <i class="fas fa-chevron-down"></i></a>
 					<ul class="shadow">
