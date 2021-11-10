@@ -22,8 +22,8 @@ return [
 'payment_method_credit_card' => '0',
 'products_per_page' => '5',
 'products_per_page_random' => '10',
-'server_uploads_paths' => 'C:\Users\migue\Downloads\madecms',
-'server_uploads_user_paths' => 'C:\Users\migue\Downloads\madecms\public',
-'server_webapp_path' => 'C:\Users\migue\Downloads\madecms',
+'server_uploads_paths' => 'C:\xampp\htdocs\madecms\public',
+'server_uploads_user_paths' => 'C:\xampp\htdocs\madecms\public',
+'server_webapp_path' => 'C:\xampp\htdocs\madecms\public',
 ]
 ?>

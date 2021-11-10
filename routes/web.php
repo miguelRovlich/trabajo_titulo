@@ -65,3 +65,8 @@ Route::post('/md/api/load/user/favorites', 'ApiJsController@postUserFavorites');
 Route::post('/md/api/favorites/add/{object}/{module}', 'ApiJsController@postFavoriteAdd');
 Route::post('/md/api/load/product/inventory/{inv}/variants', 'ApiJsController@postProductInventoryVariants');
 Route::post('/md/api/load/cities/{state}', 'ApiJsController@postCoverageCitiesFromState');
+
+
+// E-MAIL VERIFICATION
+
+Route::get('register/verify/{code}', 'Auth\RegisterController@verify');
