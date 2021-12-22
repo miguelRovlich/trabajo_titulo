@@ -12,7 +12,6 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3">
-			@if(kvfj(Auth::user()->permissions, 'coverage_add'))
 			<div class="panel shadow">
 				<div class="header">
 					<h2 class="title"><i class="fas fa-plus"></i> Nuevo Estado / Departamento</h2>
@@ -42,7 +41,7 @@
 					
 				</div>
 			</div>
-			@endif
+			
 		</div>
 
 		<div class="col-md-9">
@@ -69,22 +68,18 @@
 								<td>{{ $state->days }} días</td>
 								<td>
 									<div class="opts">
-										@if(kvfj(Auth::user()->permissions, 'coverage_edit'))
 										<a href="{{ url('/admin/coverage/'.$state->id.'/edit') }}" data-toggle="tooltip" data-placement="top" class="edit" title="Editar">
 											<i class="fas fa-edit"></i>
 										</a>
-										@endif
-
+			
 										<a href="{{ url('/admin/coverage/'.$state->id.'/cities') }}" data-toggle="tooltip" data-placement="top" title="Ciudades" class="inventory">
 											<i class="fas fa-list-ul"></i>
 										</a>
 
 										
-										@if(kvfj(Auth::user()->permissions, 'coverage_delete'))
 										<a href="{{ url('/admin/coverage/'.$state->id.'/delete') }}" data-action="delete" data-path="admin/coverage" data-object="{{ $state->id }}" data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn-deleted deleted">
 											<i class="fas fa-trash-alt"></i>
 										</a>
-										@endif
 									</div>
 								</td>
 							</tr>

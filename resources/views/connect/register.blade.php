@@ -26,7 +26,7 @@
 			</div>
 			{!! Form::text('lastname', null, ['class' => 'form-control', 'required']) !!}
 		</div>
-
+		
 		<label for="email" class="mtop16">Correo electrónico:</label>
 		<div class="input-group">
 			<div class="input-group-prepend">

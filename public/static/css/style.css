@@ -1,7 +1,7 @@
 body {
   background-color: #f4f4f4;
   font-size: 14px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 a:active,
 .btn:active,
@@ -96,25 +96,26 @@ nav .navbar-toggler:focus {
 }
 nav .navbar-nav li.nav-item a.nav-link {
   border-bottom: 2px solid #fff;
-  color: #000;
+  color: #242121;
   font-size: 0.9em;
   margin-right: 4px;
-  margin-bottom: -1px;
+  margin-bottom: 1px;
   padding: 16px !important;
 }
 nav .navbar-nav li.nav-item a.nav-link:hover {
-  border-bottom: 2px solid #2caaff;
-  color: #334f9a;
+  border-bottom: 1px solid #2caaff;
+  color: #000;
 }
 nav .navbar-nav li.nav-item a.active {
   border-bottom: 2px solid #2caaff;
 }
 nav .navbar-nav li.nav-item a.btn {
-  border: 1px solid #2caaff;
+  border: 1px solid #2cb2ff;
   color: #000;
 }
 nav .navbar-nav li.nav-item a.btn:hover {
-  background-color: #fdd700;
+  background-color: #2caafd;
+  color:rgb(255, 255, 255)
 }
 nav .navbar-nav li.nav-item ul.dropdown-menu {
   border-radius: 0px 0px 4px 4px;
@@ -133,13 +134,13 @@ nav .navbar-nav li.nav-item ul.dropdown-menu li a {
   width: 100%;
 }
 nav .navbar-nav li.nav-item ul.dropdown-menu li a i {
-  color: #334f9a;
+  color: #2196f3;
 }
 nav .navbar-nav li.nav-item ul.dropdown-menu li:last-child {
   border-bottom: 0px;
 }
 nav .navbar-nav li.nav-item ul.dropdown-menu li:hover {
-  background-color: #f7f7f7;
+  background-color: #2196f3;
 }
 nav .navbar-nav li.link-acc {
   overflow: hidden;
@@ -298,8 +299,8 @@ nav .navbar-nav li.link-user a:hover {
   padding: 8px 32px !important;
 }
 .wrapper .panel .inside .btn-primary:hover {
-  background-color: #fdd700;
-  color: #000;
+  background-color: #00f5fd;
+  color: rgb(255, 255, 255);
 }
 .home_action_bar {
   background-color: #fff;
@@ -513,7 +514,7 @@ nav .navbar-nav li.link-user a:hover {
 }
 .products_list {
   display: block;
-  paddding: 0px;
+  padding: 0px;
   overflow: hidden;
   margin-top: 12px;
   width: 100%;
@@ -805,8 +806,9 @@ nav .navbar-nav li.link-user a:hover {
   outline: none !important;
 }
 .home_title {
-  font-size: 1.8em;
+  font-size: 1.9em;
   font-weight: 700;
+  text-align: center;
 }
 .store {
   margin-bottom: 24px;
@@ -879,6 +881,13 @@ nav .navbar-nav li.link-user a:hover {
   background-color: #d93f5d;
   color: #fff;
 }
+
+.p-uwu{
+    font-size: 1.3em;
+    font-weight: 700;
+    text-align: center;
+    color: #181717;
+}
 .cart .btn-dark {
   font-size: 0.8em;
   color: #fff !important;
@@ -932,7 +941,7 @@ nav .navbar-nav li.link-user a:hover {
 .cart .items .form_quantity button {
   border: 0px;
   background-color: #2caaff;
-  border-box: box-sizing;
+  border: box-sizing;
   color: #fff;
   display: block;
   float: left;
@@ -1100,6 +1109,10 @@ nav .navbar-nav li.link-user a:hover {
   width: 49%;
 }
 .mcswitch a:hover {
+  background-color: #fff;
+}
+
+.mcard {
   background-color: #fff;
 }
 .mcswitch a:last-child {

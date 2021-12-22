@@ -43,7 +43,7 @@
 											</a>
 										</td>
 										<td>
-											<img src="{{ url('/uploads/'.$item->getProduct->file_path.'/t_'.$item->getProduct->image) }}" class="img-fluid rounded">
+											{{-- <img src="{{ url('/uploads/'.$item->getProduct->file_path.'/t_'.$item->getProduct->image) }}" class="img-fluid rounded"> --}}
 										</td>
 										<td>
 											<a href="{{ url('/product/'.$item->getProduct->id.'/'.$item->getProduct->slug) }}">
@@ -52,9 +52,9 @@
 												<div class="price_discount">
 													Precio: 
 													@if($item->discount_status == "1")
-													<span class="price_initial">{{ config('madecms.currency').number_format($item->price_initial, 2, '.', ',') }}</span> / 
+													<span class="price_initial">{{ config('madecms.currency').number_format($item->price_initial, 0, '.', '.') }}</span> / 
 													@endif
-													<span class="price_unit">{{ config('madecms.currency').number_format($item->price_unit, 2, '.', ',') }}  @if($item->discount_status == "1") ({{ $item->discount }}% de descuento) @endif</span>
+													<span class="price_unit">{{ config('madecms.currency').number_format($item->price_unit, 0, '.', '.') }}  @if($item->discount_status == "1") ({{ $item->discount }}% de descuento) @endif</span>
 												</div>
 											</a>
 										</td>
@@ -66,24 +66,24 @@
 											{!! Form::close() !!}
 											</div>
 										</td>
-										<td><strong>{{ number($item->total) }}</strong></td>
+										<td><strong>CLP {{ $item->total }}</strong></td>
 									</tr>
 									@endforeach
 
 									<tr>
 										<td colspan="3"></td>
 										<td><strong>Subtotal:</strong></td>
-										<td><strong>{{ number($order->getSubtotal()) }}</strong></td>
+										<td><strong>CLP {{ $order->getSubtotal() }}</strong></td>
 									</tr>
 									<tr>
 										<td colspan="3"></td>
 										<td><strong>Precio de envió:</strong></td>
-										<td><strong>{{ number($shipping) }}</strong></td>
+										<td><strong>CLP {{ $shipping }}</strong></td>
 									</tr>
 									<tr>
 										<td colspan="3"></td>
 										<td><strong>Total de la orden:</strong></td>
-										<td><strong>{{ number($order->total) }}</strong></td>
+										<td><strong>CLP {{ $order->total }}</strong></td>
 									</tr>
 								</tbody>
 							</table>

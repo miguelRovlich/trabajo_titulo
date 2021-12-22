@@ -53,9 +53,10 @@
 						<span class="input-group-text" id="basic-addon1">
 							<i class="far fa-keyboard"></i>
 						</span>
-						{!! Form::select('subcategory', [], null, ['class' => 'form-select', 'id' => 'subcategory', 'required']) !!}
-					
-						{{-- {!! Form::text('subcategory', null, ['class' => 'form-control']) !!} --}}
+							{!! Form::hidden('subcategory', 0, ['class' => 'form-control']) !!}
+							{!! Form::select('subcategory', [], null, ['class' => 'form-select', 'id' => 'subcategory']) !!}
+						
+
 					</div>
 				</div>
 
@@ -63,7 +64,26 @@
 			</div>
 
 			<div class="row mtop16">
-
+				<div class="col-md-3">
+					<label for="category">Precio Producto:</label>
+					<div class="input-group">
+						<span class="input-group-text" id="basic-addon1">
+							<i class="far fa-keyboard"></i>
+						</span>
+						
+						{!! Form::number('price', null, ['class' => 'form-control']) !!}
+					</div>
+				</div>
+				<div class="col-md-3">
+					<label for="category">Cantidad Producto</label>
+					<div class="input-group">
+						<span class="input-group-text" id="basic-addon1">
+							<i class="far fa-keyboard"></i>
+						</span>
+						
+						{!! Form::number('quantity', null, ['class' => 'form-control']) !!}
+					</div>
+				</div>
 				<div class="col-md-3">
 					<label for="indiscount">¿En Descuento?:</label>
 					<div class="input-group">

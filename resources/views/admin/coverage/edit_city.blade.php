@@ -78,7 +78,7 @@
 				<div class="inside">
 					@if($coverage->ctype == "1")
 					<p><strong>Tipo:</strong> Ciudad</p>
-					<p><strong>Estado / Departamento:</strong> {{ $coverage->getState->name }} </p>
+					<p><strong>Region:</strong> {{ $coverage->getState->name }} </p>
 					@endif
 					
 					

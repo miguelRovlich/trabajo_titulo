@@ -18,7 +18,7 @@ class CreateProductsInventoryTable extends Migration
             $table->integer('product_id');
             $table->string('name');
             $table->integer('quantity');
-            $table->decimal('price', 11,2);
+            $table->integer('price');
             $table->integer('limited');
             $table->integer('minimum');
             $table->softDeletes();
@@ -33,6 +33,6 @@ class CreateProductsInventoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products_inventory');
+        Schema::dropIfExists('product_inventory');
     }
 }

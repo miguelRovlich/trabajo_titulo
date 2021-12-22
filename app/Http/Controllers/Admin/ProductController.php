@@ -44,13 +44,14 @@ class ProductController extends Controller
 
     public function postProductAdd(Request $request){
         $rules = [
-            'name' => 'required',
+            'name' => 'required|unique:products,name',
             'img' => 'required',
             'content' => 'required'
         ];
 
         $messages = [
             'name.required' => 'El nombre del producto es requerido',
+            'name.unique' => 'El nombre del producto debe ser unico',
             'img.required' => 'Seleccione una imagen destacada',
             'img.image' => 'El archivo no es una imagen',
             'content.required' => 'Ingrese una descripcion del producto'
@@ -62,26 +63,35 @@ class ProductController extends Controller
         else:
             
             $product = new Product;
-            $product->status = '0';
+            $product->status = '1';
             $product->code = e($request->input('code'));
             $product->name = e($request->input('name'));
             $product->slug = Str::slug($request->input('name'));
+            $product->price = $request->input('price');
+            $product->quantity = $request->input('quantity');
             $product->category_id = $request->input('category');
             $product->subcategory_id = $request->input('subcategory');
-            $product->image = $this->postFileUpload('img', $request, [[256,256,'256x256']]);
+            $product->file_path = date("Y/m/d");
+            $rp = json_decode($this->postFileUpload('img', $request, [[256,256,'256x256']]));
+            $product->image = $rp->final_name;
             $product->in_discount = $request->input('indiscount');
             $product->discount = $request->input('discount');
             $product->content = e($request->input('content'));
 
             if($product->save()):
-                return redirect('/admin/product/'.$product->id.'/edit')->with('message', 'Guardado con éxito.')->with('typealert', 'success');
+                return redirect('/admin/products/1')->with('message', 'Guardado con éxito.')->with('typealert', 'success');
+            else:
+                echo "<pre>";
+                var_dump($product->getErrors());
+                exit;
             endif;
         endif;
 
     }
 
     public function getProductEdit($id){
-        $p = Product::findOrFail($id);
+        
+        $p = Product::find(intval($id));
         $cats = Category::where('module', '0')->where('parent', '0')->pluck('name', 'id');
         $data = ['cats' => $cats, 'p' => $p];
         return view('admin.products.edit', $data);
@@ -96,7 +106,7 @@ class ProductController extends Controller
         $messages = [
             'name.required' => 'El nombre del producto es requerido',
             'img.image' => 'El archivo no es una imagen',
-            'price.required' => 'Ingrece el precio del producto',
+            'price.required' => 'Ingrese el precio del producto',
             'content.required' => 'Ingrese una descripcion del producto'
         ];
 
@@ -105,28 +115,31 @@ class ProductController extends Controller
             return back()->withErrors($validator)->with('message', 'Se ha producido un error.')->with('typealert', 'danger')->withInput();
         else:
             
-            $product = Product::findOrFail($id);
+            $product = Product::find($id);
             $ipp = $product->file_path;
             $ip = $product->image;
             $product->status = $request->input('status');
             $product->code = e($request->input('code'));
+            
             $product->name = e($request->input('name'));
             $product->category_id = $request->input('category');
-            $product->subcategory_id = $request->input('subcategory');
             if($request->hasFile('img')):
-                $actual_image = $product->image;
+                $actual_image = json_encode(['path' => $product->file_path, 'final_name' => $product->image]);
                 if(!is_null($product->image)):
-                    $this->getFileDelete('uploads', $actual_image, ['256x256', '328x328']);
+                    $this->getFileDelete('uploads', $actual_image);
                 endif;
-                $product->image = $this->postFileUpload('img', $request, [[256,256,'256x256']]);
+                echo "<pre>";
+                $rp = json_decode($this->postFileUpload('img', $request, [[256,256,'256x256']]));
+                $product->image = $rp->final_name;
             endif;
+            $product->price = $request->input('price_edit');
+            $product->quantity = $request->input('quantity');
             $product->in_discount = $request->input('indiscount');
             $product->discount = $request->input('discount');
             $product->discount_until_date = $request->input('discount_until_date');
             $product->content = e($request->input('content'));
 
             if($product->save()):
-                $this->getUpdateMinPrice($product->id);
                 return back()->with('message', 'Actualizado con éxito.')->with('typealert', 'success');
             endif;
         endif;
@@ -213,9 +226,8 @@ class ProductController extends Controller
     }
 
     public function getProductInventory($id){
-        $product = Product::findOrFail($id);
-        $data = ['product' => $product];
-        return view('admin.products.inventory', $data);
+        $product = Product::where('id',$id)->get();
+        return view('admin.products.inventory', compact('product'));
     }
 
     public function postProductInventory($id, Request $request){
@@ -247,45 +259,11 @@ class ProductController extends Controller
         endif;
     }
 
-    public function getProductInventoryEdit($id){
-        $inventory = Inventory::findOrFail($id);
-        $data = ['inventory' => $inventory];
-        return view('admin.products.inventory_edit', $data);
-    }
-
-    public function postProductInventoryEdit($id, Request $request){
-         $rules = [
-            'name' => 'required',
-            'price' => 'required',
-        ];
-
-        $messages = [
-            'name.required' => 'El nombre del inventario es requerido',
-            'price.required' => 'Ingrece el precio del inventario'
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-        if($validator->fails()):
-            return back()->withErrors($validator)->with('message', 'Se ha producido un error.')->with('typealert', 'danger')->withInput();
-        else:
-            $inventory = Inventory::find($id);
-            $inventory->name = e($request->input('name'));
-            $inventory->quantity = $request->input('inventory');
-            $inventory->price = $request->input('price');
-            $inventory->limited = $request->input('limited');
-            $inventory->minimum = $request->input('minimum');
-            if($inventory->save()):
-                $this->getUpdateMinPrice($inventory->product_id);
-                return back()->with('message', 'Guardado con éxito.')->with('typealert', 'success');
-            endif;
-        endif;
-    }
-
     public function getProductInventoryDeleted($id){
-         $inventory = Inventory::findOrFail($id);
-         if($inventory->delete()):
-            $this->getUpdateMinPrice($inventory->product_id);
-            return back()->with('message', 'Inventario eliminado.')->with('typealert', 'success');
+         $inventory = Product::findOrFail($id);
+         $inventory->quantity = 0;
+         if($inventory->save()):
+            return back()->with('message', 'Cantidad eliminada.')->with('typealert', 'success');
         endif;
     }
 
@@ -323,7 +301,7 @@ class ProductController extends Controller
 
     public function getUpdateMinPrice($id){
         $product = Product::find($id);
-        $price = $product->getPrice->min('price');
+        $price = $product->price;
 
         $product->price = $price;
         $product->save();

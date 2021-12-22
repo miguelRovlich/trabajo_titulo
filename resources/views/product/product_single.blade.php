@@ -49,15 +49,16 @@
 
 					<div class="add_cart">
 						{!! Form::open(['url' => '/cart/product/'.$product->id.'/add']) !!}
-						{!! Form::hidden('inventory', null, ['id' => 'field_inventory']) !!}
+						{!! Form::hidden('product', $product->id, ['id' => 'field_inventory']) !!}
 						{!! Form::hidden('variant', null, ['id' => 'field_variant']) !!}
 						<div class="row">
 							<div class="col-md-12">
 								<div class="variants mtop16">
+									Disponibles: {{ $product->quantity }}
 									<p><strong>Opciones del producto:</strong></p>
 									<ul id="inventory">
 										@foreach($product->getInventory as $inventory)
-										<li><a href="#" class="inventory" id="inventory_{{ $inventory->id }}" data-inventory-id="{{ $inventory->id }}">{{ $inventory->name }} - <span class="price">{{ Config::get('madecms.currency').number_format($inventory->price, 2, '.',',') }}</span></a></li>
+										<li><a href="#" class="inventory" id="inventory_{{ $inventory->id }}" data-inventory-id="{{ $inventory->id }}">{{ $inventory->name }} - <span class="price">{{ Config::get('madecms.currency').number_format($inventory->price) }}</span></a></li>
 										@endforeach
 									</ul>
 								</div>
