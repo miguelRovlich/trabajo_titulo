@@ -12,7 +12,9 @@
 					@foreach($categories as $category)
 					<li>
 						<a href="{{ url('/store/category/'.$category->id.'/'.$category->slug) }}">
-							{{-- <img src="{{ getUrlFileFromUploads($category->icon) }}" alt="{{ $category->name }}">  --}}
+							{{-- @if($category->icono != NULL)
+								<img src="{{ getUrlFileFromUploads($category->icon) }}" alt="{{ $category->name }}">
+							@endif --}}
 							{{ $category->name }}
 						</a>
 					</li>
@@ -25,7 +27,9 @@
 			<div class="store_white">
 				<section>
 					<h2 class="home_title"><i class="fas fa-store-alt"></i> Últimos productos agregados</h2>
-					<div class="products_list" id="products_list"></div>
+					<div class="products_list" id="products_list">
+						
+					</div>
 				
 					<div class="load_more_products">
 						<a href="#" id="load_more_products"><i class="far fa-paper-plane"></i> Cargar mas productos</a>

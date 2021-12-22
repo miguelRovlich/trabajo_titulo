@@ -49,13 +49,25 @@ class CartController extends Controller
         endif;
         $order->payment_method = $request->input('payment_method');
         $order->user_comment = $request->input('order_msg');
+        
         if($order->save()):
-            $order = Order::find($order->id);
+            $orderItem = OrderItem::where('order_id', $order->id)->get();
+            $oitem = $orderItem->toArray();
+            
+
+            foreach($oitem as $oi){
+
+                $product = Product::find($oi['product_id']);
+
+                $product->quantity = ($product->quantity - $oi['quantity']);
+                $product->save();
+            }
+
             if($order->payment_method == "0" && $order->status == "1"):
                 $this->getOrderEmailDetails($order->id);
                 return redirect('account/history/order/'.$order->id);
             else:
-                return redirect('/cart/payment');
+                return redirect('account/history/order/'.$order->id);
             endif;
         endif;
     }
@@ -76,6 +88,7 @@ class CartController extends Controller
 
     public function getShippingValue($order_id){
         $order = Order::find($order_id);
+
         if($order->o_type == "0" || Config::get('cms.to_go') == "0"):
             $shipping_method = Config::get('cms.shipping_method');
 
@@ -111,27 +124,28 @@ class CartController extends Controller
             $order->o_type = '0';
             $order->subtotal = $order->getSubtotal();
             $order->delivery = $price;
-            $order->total = $order->getSubtotal() + $price;
-            $order->save();
+            $order->total = ($order->getSubtotal() + $price);
+           
+            if($order->save()):
+                
+            endif;
         else:
             $price = "0";
             $order->total = $order->getSubtotal();
             $order->save();
         endif;
-
         return $price;
     }
 
     public function postCartAdd(Request $request, $id){
-        if(is_null($request->input('inventory'))):
+        $inventory = Product::findOrFail($request->input('product'));
+        if(is_null($request->input('product'))):
             return back()->with('message', 'Seleccione una opcion del producto.')->with('typealert', 'danger');
         else:
-            $inventory = Inventory::where('id', $request->input('inventory'))->count();
-            if($inventory == "0"):
+            if($inventory->quantity == "0"):
                  return back()->with('message', 'La opción seleccionada no esta disponible.')->with('typealert', 'danger');
             else:
-                $inventory = Inventory::find($request->input('inventory'));
-                if($inventory->product_id != $id):
+                if($inventory->id != $id):
                     return back()->with('message', 'No podemos agregar este producto al carrito.')->with('typealert', 'danger');
                 else:
                 	$order = $this->getUserOrder();
@@ -140,52 +154,27 @@ class CartController extends Controller
                 		return back()->with('message', 'Es necesario ingresar la cantidad que desea ordenar de este producto.')->with('typealert', 'danger');
                 	else:
 
-                        if($inventory->limited == "0"):
-                            if($request->input('quantity') > $inventory->quantity):
-                                return back()->with('message', 'No disponemos de esa cantidad en inventario de este producto.')->with('typealert', 'danger');
-                            endif;
+                        if($request->input('quantity') > $inventory->quantity):
+                            return back()->with('message', 'No disponemos de esa cantidad en inventario de este producto.')->with('typealert', 'danger');
                         endif;
 
-                        if(count(collect($inventory->getVariants)) > "0"):
-                            if(is_null($request->input('variant'))):
-                                return back()->with('message', 'Seleccione todas las opciones del producto.')->with('typealert', 'danger');
-                            endif;
-                        endif;
-
-                        if(!is_null($request->input('variant'))):
-                            $variant = Variant::where('id', $request->input('variant'))->count();
-                            if($variant == "0"):
-                                return back()->with('message', 'Selección no encontrada.')->with('typealert', 'danger');
-                            else:
-                                $variant = Variant::find($request->input('variant'));
-                                if($variant->inventory_id != $inventory->id):
-                                    return back()->with('message', 'Selección no valida.')->with('typealert', 'danger');
-                                endif;
-                            endif;
-                        endif;
-
-                        $query = OrderItem::where('order_id', $order->id)->where('product_id', $product->id)->count();
+                        $query = OrderItem::where('order_id', $order->id)->where('product_id', $inventory->id)->count();
                         if($query == 0):
                     		$oitem = new OrderItem;
-                            $price = $this->getCalculatePrice($product->in_discount, $product->discount, $inventory->price);
+                            $price = $this->getCalculatePrice($inventory->in_discount, $inventory->discount, $inventory->price);
                     		$total = $price * $request->input('quantity');
-                    		if($request->input('variant')):
-                    			$variant = Variant::find($request->input('variant'));
-                    			$variant_label = ' / '.$variant->name;
-                    		else:
-                    			$variant_label = '';
-                    		endif;
-                    		$label = $product->name.' / '.$inventory->name.$variant_label;
+                    		$label = $product->name.' / '.$inventory->name;
                     		$oitem->user_id = Auth::id();
                     		$oitem->order_id = $order->id;
                     		$oitem->product_id = $id;
-                    		$oitem->inventory_id = $request->input('inventory');
-                    		$oitem->variant_id = $request->input('variant');
+
+                            $c = Product::findOrFail($id);
+                            $oitem->category_id = $c->category_id;
                     		$oitem->label_item = $label;
                     		$oitem->quantity = $request->input('quantity');
-                    		$oitem->discount_status = $product->in_discount;
-                    		$oitem->discount = $product->discount;
-                            $oitem->discount_until_date = $product->discount_until_date;
+                    		$oitem->discount_status = $inventory->in_discount;
+                    		$oitem->discount = $inventory->discount;
+                            $oitem->discount_until_date = $inventory->discount_until_date;
                     		$oitem->price_initial = $inventory->price;
                             $oitem->price_unit = $price;
                     		$oitem->total = $total;
@@ -204,15 +193,13 @@ class CartController extends Controller
     public function postCartItemQuantityUpdate($id, Request $request){
         $order = $this->getUserOrder();
         $oitem = OrderItem::find($id);
-        $inventory = Inventory::find($oitem->inventory_id);
+        $inventory = Product::find($oitem->product_id);
         //$product = Product::find($oitem->product_id);
         if($order->id != $oitem->order_id):
             return back()->with('message', 'No podemos actualizar la cantidad de este producto.')->with('typealert', 'danger');
         else:
-            if($inventory->limited == "0"):
-                if($request->input('quantity') > $inventory->quantity):
-                    return back()->with('message', 'La cantidad ingresada supera al inventario.')->with('typealert', 'danger');
-                endif;
+            if($request->input('quantity') > $inventory->quantity):
+                return back()->with('message', 'La cantidad ingresada supera al inventario.')->with('typealert', 'danger');
             endif;
             $total =  $oitem->price_unit * $request->input('quantity');
             $oitem->quantity = $request->input('quantity');

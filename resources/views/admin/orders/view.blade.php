@@ -109,31 +109,31 @@
 											<div class="price_discount">
 												Precio: 
 												@if($item->discount_status == "1")
-												<span class="price_initial">{{ config('madecms.currency').number_format($item->price_initial, 2, '.', ',') }}</span> / 
+												<span class="price_initial">{{ config('madecms.currency').$item->price_initial}}</span> / 
 												@endif
-												<span class="price_unit">{{ config('madecms.currency').number_format($item->price_unit, 2, '.', ',') }}  @if($item->discount_status == "1") ({{ $item->discount }}% de descuento) @endif</span>
+												<span class="price_unit">{{ config('madecms.currency').$item->price_unit }}  @if($item->discount_status == "1") ({{ $item->discount }}% de descuento) @endif</span>
 											</div>
 										</a>
 									</td>
 									<td>{{ $item->quantity }}</td>
-									<td><strong>{{ number($item->total) }}</strong></td>
+									<td><strong>{{ number_format($item->total, 0, ',', '.') }}</strong></td>
 								</tr>
 								@endforeach
 
 								<tr>
 									<td colspan="2"></td>
 									<td><strong>Subtotal:</strong></td>
-									<td><strong>{{ number($order->getSubtotal()) }}</strong></td>
+									<td><strong>{{ number_format($order->getSubtotal(), 0, ',', '.') }}</strong></td>
 								</tr>
 								<tr>
 									<td colspan="2"></td>
 									<td><strong>Precio de envió:</strong></td>
-									<td><strong>{{ number($order->delivery) }}</strong></td>
+									<td><strong>{{ number_format($order->delivery, 0, ',', '.') }}</strong></td>
 								</tr>
 								<tr>
 									<td colspan="2"></td>
 									<td><strong>Total de la orden:</strong></td>
-									<td><strong>{{ number($order->total) }}</strong></td>
+									<td><strong>{{ number_format($order->total, 0, ',', '.') }}</strong></td>
 								</tr>
 							</tbody>
 						</table>

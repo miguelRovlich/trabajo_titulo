@@ -66,24 +66,24 @@
 											{!! Form::close() !!}
 											</div>
 										</td>
-										<td><strong>{{ number($item->total) }}</strong></td>
+										<td><strong>CLP {{ $item->total }}</strong></td>
 									</tr>
 									@endforeach
 
 									<tr>
 										<td colspan="3"></td>
 										<td><strong>Subtotal:</strong></td>
-										<td><strong>{{ number($order->getSubtotal()) }}</strong></td>
+										<td><strong>CLP {{ $order->getSubtotal() }}</strong></td>
 									</tr>
 									<tr>
 										<td colspan="3"></td>
 										<td><strong>Precio de envió:</strong></td>
-										<td><strong>{{ number($shipping) }}</strong></td>
+										<td><strong>CLP {{ $shipping }}</strong></td>
 									</tr>
 									<tr>
 										<td colspan="3"></td>
 										<td><strong>Total de la orden:</strong></td>
-										<td><strong>{{ number($order->total) }}</strong></td>
+										<td><strong>CLP {{ $order->total }}</strong></td>
 									</tr>
 								</tbody>
 							</table>

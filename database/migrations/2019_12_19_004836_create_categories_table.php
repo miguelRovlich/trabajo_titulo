@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('module');
             $table->string('name');
             $table->string('slug');
-            $table->string('icon');
+            $table->string('icono')->default('0');
             $table->timestamps();
         });
     }

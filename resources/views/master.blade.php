@@ -79,7 +79,7 @@
 					</li>
 					@else
 					<li class="nav-item dropdown link-acc link-user">
-						<a href="#" class="nav-link btn dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+						<a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
 							@if(is_null(Auth::user()->avatar))
 								<img src="{{ url('/static/images/default-avatar.png') }}">
 							@else
