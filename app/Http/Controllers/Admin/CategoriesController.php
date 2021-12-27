@@ -77,12 +77,6 @@ class CategoriesController extends Controller
             $c = Category::find($id);
             $c->name = e($request->input('name'));
             $c->slug = Str::slug($request->input('name'));
-            if($request->hasFile('icon')):
-                $actual_icon = $c->icon;
-                if(!is_null($c->icon)):
-                    $this->getFileDelete('uploads', $actual_icon);
-                endif;
-            endif;
             $c->order = $request->input('order');
             if($c->save()):
                 return back()->with('message', 'Guardado con éxito.')->with('typealert', 'success');
