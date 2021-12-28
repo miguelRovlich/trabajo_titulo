@@ -211,13 +211,14 @@ class ProductController extends Controller
     public function getProductDelete($id){
          $p = Product::findOrFail($id);
          $po = OrderItem::where('product_id', $p->id)->get();
-            if(count($po) > 0){
-                return back()->with('message', 'No se puede borrar Productos con Ordenes realizadas')->with('typealert', 'danger');
-            }else{
-                if($p->destroy()):
-                    return back()->with('message', 'Borrado con éxito.')->with('typealert', 'success');
-                 endif;
-            }
+         if(count($po) <= 0){
+            $p->category_id = NULL;
+            if($p->forceDelete()):
+                return back()->with('message', 'Borrado con éxito.')->with('typealert', 'success');
+            endif;
+         }else{
+             return back()->with('message', 'No se puede borrar Productos con Ordenes realizadas')->with('typealert', 'danger');
+         }
     }
     public function getProductRestore($id){
          $p = Product::onlyTrashed()->where('id', $id)->first();
