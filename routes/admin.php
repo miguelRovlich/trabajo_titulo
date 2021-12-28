@@ -19,7 +19,7 @@
  	Route::get('/products/{status}', 'Admin\ProductController@getHome')->name('products');
  	Route::get('/product/add', 'Admin\ProductController@getProductAdd')->name('product_add');
  	Route::get('/product/{id}/edit', 'Admin\ProductController@getProductEdit')->name('product_edit');
- 	Route::get('/product/{id}/delete', 'Admin\ProductController@getProductDelete')->name('product_delete');
+ 	Route::delete('/product/{id}/delete', 'Admin\ProductController@getProductDelete')->name('product_delete');
  	Route::get('/product/{id}/restore', 'Admin\ProductController@getProductRestore')->name('product_delete');
  	Route::get('/product/{id}/inventory', 'Admin\ProductController@getProductInventory')->name('product_inventory');
  	Route::post('/product/add', 'Admin\ProductController@postProductAdd')->name('product_add');

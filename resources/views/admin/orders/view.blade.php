@@ -55,7 +55,7 @@
 
 					<div class="inside">
 						@if($order->o_type == "0")
-							<p style="margin-bottom: 2px;"><strong>Estado:</strong> {{ $order->getUserAddress->getState->name }}</p>
+							<p style="margin-bottom: 2px;"><strong>Region:</strong> {{ $order->getUserAddress->getState->name }}</p>
 							<p style="margin-bottom: 2px;"><strong>Ciudad:</strong> {{ $order->getUserAddress->getCity->name }}</p>
 							<p style="margin-bottom: 2px;"><strong>Dirección:</strong> {{ kvfj($order->getUserAddress->addr_info, 'add1') }}, {{ kvfj($order->getUserAddress->addr_info, 'add2') }}, {{ kvfj($order->getUserAddress->addr_info, 'add3') }}</p>
 

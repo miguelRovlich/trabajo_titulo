@@ -38,13 +38,12 @@
 								<span class="title"><i class="fas fa-user-shield"></i> Role de usuario:</span>
 								<span class="text">{{ getRoleUserArray(null,$u->role) }}</span>
 							</div>
-							@if(kvfj(Auth::user()->permissions, 'user_banned'))
 								@if($u->status == "100")
 								<a href="{{ url('/admin/user/'.$u->id.'/banned') }}" class="btn btn-success">Activar usuario</a>
 								@else
 								<a href="{{ url('/admin/user/'.$u->id.'/banned') }}" class="btn btn-danger">Suspender Usuario</a>
 								@endif
-							@endif
+						
 						</div>
 					</div>
 				</div>
@@ -96,7 +95,6 @@
 					</div>
 
 					<div class="inside">
-						@if(kvfj(Auth::user()->permissions, 'user_edit'))
 						{!! Form::open(['url' => '/admin/user/'.$u->id.'/edit']) !!}
 							<div class="row">
 
@@ -118,7 +116,6 @@
 								</div>
 							</div>
 						{!! Form::close() !!}
-						@endif
 					</div>
 				</div>
 			</div>

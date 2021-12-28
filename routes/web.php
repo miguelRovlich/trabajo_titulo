@@ -43,6 +43,7 @@ Route::post('/reset', 'ConnectController@postReset')->name('reset');
 Route::get('/register', 'ConnectController@getRegister')->name('register');
 Route::post('/register', 'ConnectController@postRegister')->name('register');
 Route::get('/logout', 'ConnectController@getLogout')->name('logout');
+Route::get('/exit', 'ConnectController@getExit')->name('exit');
 
 // Module Products
 Route::get('/product/{id}/{slug}', 'ProductController@getProduct')->name('product_single');

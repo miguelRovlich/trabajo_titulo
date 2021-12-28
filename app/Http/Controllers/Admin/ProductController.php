@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Http\Models\Category, App\Http\Models\Product, App\Http\Models\PGallery, App\Http\Models\Inventory, App\Http\Models\Variant;
+use App\Http\Models\Category, App\Http\Models\Product, App\Http\Models\PGallery, App\Http\Models\Inventory, App\Http\Models\Variant,App\Http\Models\OrderItem;
 
 use Validator, Str, Config, Image;
 
@@ -77,7 +77,6 @@ class ProductController extends Controller
             $product->in_discount = $request->input('indiscount');
             $product->discount = $request->input('discount');
             $product->content = e($request->input('content'));
-
             if($product->save()):
                 return redirect('/admin/products/1')->with('message', 'Guardado con éxito.')->with('typealert', 'success');
             else:
@@ -90,7 +89,6 @@ class ProductController extends Controller
     }
 
     public function getProductEdit($id){
-        
         $p = Product::find(intval($id));
         $cats = Category::where('module', '0')->where('parent', '0')->pluck('name', 'id');
         $data = ['cats' => $cats, 'p' => $p];
@@ -212,9 +210,14 @@ class ProductController extends Controller
 
     public function getProductDelete($id){
          $p = Product::findOrFail($id);
-         if($p->delete()):
-            return back()->with('message', 'Producto enviado a la papelera de reciclaje.')->with('typealert', 'success');
-        endif;
+         $po = OrderItem::where('product_id', $p->id)->get();
+            if(count($po) > 0){
+                return back()->with('message', 'No se puede borrar Productos con Ordenes realizadas')->with('typealert', 'danger');
+            }else{
+                if($p->destroy()):
+                    return back()->with('message', 'Borrado con éxito.')->with('typealert', 'success');
+                 endif;
+            }
     }
     public function getProductRestore($id){
          $p = Product::onlyTrashed()->where('id', $id)->first();

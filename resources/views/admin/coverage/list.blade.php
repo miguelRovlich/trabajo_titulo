@@ -14,7 +14,7 @@
 		<div class="col-md-3">
 			<div class="panel shadow">
 				<div class="header">
-					<h2 class="title"><i class="fas fa-plus"></i> Nuevo Estado / Departamento</h2>
+					<h2 class="title"><i class="fas fa-plus"></i> Nueva region</h2>
 				</div>
 
 				<div class="inside">
@@ -47,7 +47,7 @@
 		<div class="col-md-9">
 			<div class="panel shadow">
 				<div class="header">
-					<h2 class="title"><i class="fas fa-shipping-fast"></i> Listado de Estados / Departamentos</h2>
+					<h2 class="title"><i class="fas fa-shipping-fast"></i> Listado de Regiones</h2>
 				</div>
 
 				<div class="inside">
