@@ -43,20 +43,12 @@ return [
         ],
         'uploads' => [
             'driver' => 'local',
-<<<<<<< HEAD
             'root' => 'C:\xampp\htdocs\madecms\public\uploads',
-=======
-            'root' => "C:\Users\Fco Javier\desktop\laravel\aaaaa\public\uploads",
->>>>>>> master
             'visibility' => 'public',
         ],
         'uploads_user' => [
             'driver' => 'local',
-<<<<<<< HEAD
             'root' => 'C:\xampp\htdocs\madecms\public\uploads',
-=======
-            'root' => "C:\Users\Fco Javier\desktop\laravel\aaaaa",
->>>>>>> master
         ],
 
         's3' => [
