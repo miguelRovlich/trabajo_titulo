@@ -67,10 +67,7 @@
 						<a href="{{ url('/about') }}" class="nav-link"><i class="fas fa-id-card-alt"></i> <span>Sobre Nosotros</span></a>
 					</li> --}}
 					<li class="nav-item">
-						<a href="{{ url('/contact') }}" class="nav-link"><i class="far fa-envelope-open"></i> <span>Contacto</span></a>
-					</li>
-					<li class="nav-item">
-						<a href="{{ url('/cart') }}" class="nav-link lk-cart"><i class="fas fa-shopping-cart"></i></a>
+						<a href="{{ url('/cart') }}" class="nav-link lk-cart"><i class="fas fa-shopping-cart"></i>Carrito</a>
 					</li>
 					@if(Auth::guest())
 					<li class="nav-item link-acc">
@@ -79,7 +76,7 @@
 					</li>
 					@else
 					<li class="nav-item dropdown link-acc link-user">
-						<a href="#" class="nav-link btn dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+						<a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
 							@if(is_null(Auth::user()->avatar))
 								<img src="{{ url('/static/images/default-avatar.png') }}">
 							@else

@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item">
-	<a href="{{ url('/admin/products/0') }}"><i class="fas fa-boxes"></i> Productos</a>
+	<a href="{{ url('/admin/products/1') }}"><i class="fas fa-boxes"></i> Productos</a>
 </li>
 @endsection
 
@@ -24,8 +24,6 @@
 					<ul class="shadow">
 						<li><a href="{{ url('/admin/products/1') }}"><i class="fas fa-globe-americas"></i> Públicos</a></li>
 						<li><a href="{{ url('/admin/products/0') }}"><i class="fas fa-eraser" ></i> Borradores</a></li>
-						<li><a href="{{ url('/admin/products/trash') }}"><i class="fas fa-trash"></i> Papelera</a></li>
-						<li><a href="{{ url('/admin/products/all') }}"><i class="fas fa-list-ul"></i> Todos</a></li>
 					</ul>
 				</li>
 				<li>
@@ -61,8 +59,10 @@
 				<thead>
 					<tr>
 						<td><strong>ID</strong></td>
+						<td><strong>Imagen</strong></td>
 						<td><strong>Nombre</strong></td>
-						<td><strong>Precio Min</strong></td>
+						<td><strong>Precio</strong></td>
+						<td><strong>Cantidad</strong></td>
 						<td><strong>Opciones</strong></td>
 					</tr>
 				</thead>
@@ -70,6 +70,13 @@
 					@foreach($products as $p)
 					<tr>
 						<td width="50">{{ $p->id }}</td>
+						<td width="300">
+							@if($p->file_path)
+								<img style="height:200px;width:100%;" src="{{ url('/uploads/'.$p->file_path.'/'.$p->image) }}" alt="">
+							@else
+								<img style="height:200px;width:100%;" src="{{ url('/uploads/'.$p->image) }}" alt="">
+							@endif
+						</td>
 						<td>
 							<p style="margin-bottom: 0px;">{{ $p->name }} @if($p->status == "0") <i class="fas fa-eraser" data-toggle="tooltip" data-placement="top" title="Estado: Borrador"></i> @endif</p>
 							
@@ -78,13 +85,13 @@
 						<td>
 							{{ config('madecms.currency') }} {{ $p->price }}
 						</td>
+						<td>
+							 {{ $p->quantity }}
+						</td>
 						<td width="160">
 							<div class="opts">
 								<a href="{{ url('/admin/product/'.$p->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Editar" class="edit">
 									<i class="fas fa-pencil-alt"></i>
-								</a>
-								<a href="{{ url('/admin/product/'.$p->id.'/inventory') }}" data-toggle="tooltip" data-placement="top" title="Inventario" class="inventory">
-									<i class="fas fa-box"></i>
 								</a>
 									@if(is_null($p->deleted_at))
 									<a href="#" data-path="admin/product" data-action="delete" data-object="{{ $p->id }}" data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn-deleted deleted" data-action="delete" data-path="admin/category" data-object="{{ $p->id }}">

@@ -67,18 +67,22 @@ class Controller extends BaseController
     }
 
     public function getFileDelete($disk, $file, $thumbnails = null){
+        
         $end_file = json_decode($file, true);
+        
         $file_path = Config::get('filesystems.disks.'.$disk.'.root').'/'.$end_file['path'].'/'.$end_file['final_name'];
         if(file_exists($file_path)):
 
             unlink($file_path);
 
-            foreach($thumbnails as $thumbnail):
-                $thumbnail_path = Config::get('filesystems.disks.'.$disk.'.root').'/'.$end_file['path'].'/'.$thumbnail.'_'.$end_file['final_name'];
-                if(file_exists($thumbnail_path)):
-                    unlink($thumbnail_path);
-                endif;
-            endforeach;
+            if($thumbnails != null){
+                foreach($thumbnails as $thumbnail):
+                    $thumbnail_path = Config::get('filesystems.disks.'.$disk.'.root').'/'.$end_file['path'].'/'.$thumbnail.'_'.$end_file['final_name'];
+                    if(file_exists($thumbnail_path)):
+                        unlink($thumbnail_path);
+                    endif;
+                endforeach;
+            }
 
         endif;
     }

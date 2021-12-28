@@ -29,7 +29,7 @@
 								<td>{{ getOrderStatus($order->status) }}</td>
 								<td>{{ getOrderType($order->o_type) }}</td>
 								<td>{{ getPaymentsMethods($order->payment_method) }}</td>
-								<td>{{ number($order->total) }}</td>
+								<td>{{ number_format($order->total, 0, ',', '.') }}</td>
 								<td>
 									<a href="{{ url('/account/history/order/'.$order->id) }}" class="btn btn-primary btn-sm w-100">
 										<i class="far fa-clipboard"></i> Ver Compra

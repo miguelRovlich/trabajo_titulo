@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Validator, Str, Config;
 
 use App\Http\Models\Category;
+use App\Http\Models\Product;
+use App\Http\Models\OrderItem;
 
 class CategoriesController extends Controller
 {
@@ -26,11 +28,9 @@ class CategoriesController extends Controller
     public function postCategoryAdd(Request $request, $module){
     	$rules = [
     		'name' => 'required',
-    		'icon' => 'required',
     	];
     	$messages = [
-    		'name.required' => 'Se require de un nombre para la categoria',
-    		'icon.required' => 'Se require de un icono para la categoria.'
+    		'name.required' => 'Se require de un nombre para la categoria'
     	];
 
     	$validator = Validator::make($request->all(), $rules, $messages);
@@ -49,7 +49,6 @@ class CategoriesController extends Controller
     		$c->parent = $request->input('parent');
     		$c->name = e($request->input('name'));
     		$c->slug = Str::slug($request->input('name'));
-    		$c->icon = $this->postFileUpload('icon', $request);
     		if($c->save()):
     			return back()->with('message', 'Guardado con éxito.')->with('typealert', 'success');
     		endif;
@@ -78,12 +77,6 @@ class CategoriesController extends Controller
             $c = Category::find($id);
             $c->name = e($request->input('name'));
             $c->slug = Str::slug($request->input('name'));
-            if($request->hasFile('icon')):
-                $actual_icon = $c->icon;
-                if(!is_null($c->icon)):
-                    $this->getFileDelete('uploads', $actual_icon);
-                endif;
-            endif;
             $c->order = $request->input('order');
             if($c->save()):
                 return back()->with('message', 'Guardado con éxito.')->with('typealert', 'success');
@@ -98,9 +91,18 @@ class CategoriesController extends Controller
     }
 
     public function getCategoryDelete($id){
+
         $c = Category::find($id);
-        if($c->delete()):
-            return back()->with('message', 'Borrado con éxito.')->with('typealert', 'success');
-        endif;
+        $p = Product::where('category_id', $c->id)->orderBy('id', 'Desc')->get();
+        $po = OrderItem::where('category_id', $c->id)->get();
+        if(count($p) > 0){
+            return back()->with('message', 'No se puede borrar Categorias con Productos')->with('typealert', 'danger');
+        }else if(count($po) > 0){
+            return back()->with('message', 'No se puede borrar Categorias con Ordenes realizadas')->with('typealert', 'danger');
+        }else{
+            if($c->delete()):
+                return back()->with('message', 'Borrado con éxito.')->with('typealert', 'success');
+             endif;
+        }
     }
 }

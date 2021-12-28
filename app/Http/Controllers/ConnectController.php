@@ -99,9 +99,10 @@ class ConnectController extends Controller
         else:
             return redirect('/');
         endif;
-    	
     }
-
+    public function getExit() {
+        return redirect('/');
+    }
     public function getRecover(){
         return view('connect.recover');
     }

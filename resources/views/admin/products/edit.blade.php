@@ -4,7 +4,10 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item">
-	<a href="{{ url('/admin/products/0') }}"><i class="fas fa-boxes"></i> Productos</a>
+	<a href="{{ url('/admin/products/1') }}"><i class="fas fa-boxes"></i> Productos</a>
+</li>
+<li class="breadcrumb-item">
+	<a href="{{ url('/admin/product/add') }}"><i class="fas fa-plus"></i> Agregar producto</a>
 </li>
 @endsection
 
@@ -50,26 +53,32 @@
 								<span class="input-group-text" id="basic-addon1">
 									<i class="far fa-keyboard"></i>
 								</span>
-								{!! Form::select('subcategory', [], null, ['class' => 'form-select', 'id' => 'subcategory', 'required']) !!}
+								{!! Form::select('subcategory', [], $p->subcategory_id, ['class' => 'form-select', 'id' => 'subcategory']) !!}
 							</div>
 						</div>
 
 						<div class="col-md-4">
-							<label for="category">Precio:</label>
+							<label for="category">Precio Producto:</label>
 							<div class="input-group">
 								<span class="input-group-text" id="basic-addon1">
 									<i class="far fa-keyboard"></i>
 								</span>
-								{!! Form::number('price', 0, ['class' => 'form-control', 'min' => '0', 'step' => 'any']) !!}
+								{!! Form::number('price_edit', $p->price, ['class' => 'form-control']) !!}
 							</div>
 						</div>
-
-						
 					</div>
 
 					<div class="row mtop16">
-						
-
+						<div class="col-md-3">
+							<label for="category">Cantidad Producto:</label>
+							<div class="input-group">
+								<span class="input-group-text" id="basic-addon1">
+									<i class="far fa-keyboard"></i>
+								</span>
+								
+								{!! Form::number('quantity', $p->quantity, ['class' => 'form-control']) !!}
+							</div>
+						</div>
 						<div class="col-md-3">
 							<label for="indiscount">¿En Descuento?:</label>
 							<div class="input-group">
@@ -99,8 +108,9 @@
 								{!! Form::date('discount_until_date', $p->discount_until_date, ['class' => 'form-control']) !!}
 							</div>
 						</div>
+					</div>
 
-
+					<div class="row mtop16">
 						<div class="col-md-3">
 							<label for="name">Imagen Destacada:</label>
 							<div class="form-file">
@@ -111,13 +121,6 @@
 							</label>
 							</div>
 						</div>
-
-						
-
-					</div>
-
-					<div class="row mtop16">
-
 						<div class="col-md-3">
 							<label for="code">Codígo de sistema:</label>
 							<div class="input-group">
@@ -156,18 +159,18 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="col-md-3">
 			<div class="panel shadow">
 				<div class="header">
 					<h2 class="title"><i class="far fa-image"></i> Imagen Destacada</h2>
 					<div class="inside">
-						<img src="{{ getUrlFileFromUploads($p->image) }}" class="img-fluid">
+						<img src="{{ url('/uploads/'.$p->file_path.'/'.$p->image) }}" class="img-fluid">
 					</div>
 				</div>
 			</div>
 
-			<div class="panel shadow mtop16">
+			<!-- <div class="panel shadow mtop16">
 				<div class="header">
 					<h2 class="title"><i class="far fa-images"></i> Galeria</h2>
 				</div>
@@ -191,12 +194,12 @@
 								<i class="fas fa-trash-alt"></i>
 							</a>
 							@endif
-							<img src="{{ getUrlFileFromUploads($img->file_name) }}">
+							<img src="{{ url('/uploads/'.$p->file_path.'/'.$p->image) }}">
 						</div>
 						@endforeach
 					</div>
 				</div>
-			</div>
+			</div>-->
 		</div>
 	</div>
 </div>

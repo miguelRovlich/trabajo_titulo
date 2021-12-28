@@ -19,7 +19,6 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3">
-			@if(kvfj(Auth::user()->permissions, 'coverage_edit'))
 			<div class="panel shadow">
 				<div class="header">
 					<h2 class="title"><i class="fas fa-edit"></i> Editar ciudad de envío </h2>
@@ -65,7 +64,6 @@
 					
 				</div>
 			</div>
-			@endif
 		</div>
 
 		<div class="col-md-3">
