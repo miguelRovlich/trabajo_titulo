@@ -144,12 +144,11 @@ function load_products(section){
 			data = JSON.parse(data);
 
 
-			if(data.data.length == 0){
+			if(data.length == 0){
 				load_more_products.style.display = "none";
 			}
 			
-			data.data.forEach(function(product, index) {
-				product_image = JSON.parse(product.image);
+			data.forEach(function(product, index) {
 				products_list_ids_temp.push(product.id);
 				var div = "";
 				div += "<div class=\"product\">";
@@ -165,7 +164,7 @@ function load_products(section){
 								}
 							div += "</div>";
 						div += "</div>"
-						div += "<img src=\""+base+"/uploads/"+product_image.path+"/256x256_"+product_image.final_name+"\">";
+						div += "<img src=\""+base+"/uploads/"+product.file_path+"/"+product.image+"\">";
 					div += "</div>";
 					div += "<a href=\""+base+"/product/"+product.id+"/"+product.slug+"\" title=\""+product.name+"\">";
 						div += "<div class=\"title\">"+product.name+"</div>";

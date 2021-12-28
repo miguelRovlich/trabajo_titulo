@@ -49,11 +49,12 @@
 
 					<div class="add_cart">
 						{!! Form::open(['url' => '/cart/product/'.$product->id.'/add']) !!}
-						{!! Form::hidden('inventory', null, ['id' => 'field_inventory']) !!}
+						{!! Form::hidden('product', $product->id, ['id' => 'field_inventory']) !!}
 						{!! Form::hidden('variant', null, ['id' => 'field_variant']) !!}
 						<div class="row">
 							<div class="col-md-12">
 								<div class="variants mtop16">
+									Disponibles: {{ $product->quantity }}
 									<p><strong>Opciones del producto:</strong></p>
 									<ul id="inventory">
 										@foreach($product->getInventory as $inventory)

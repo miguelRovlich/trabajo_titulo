@@ -68,7 +68,7 @@
 								<td>{{ $order->getUser->name }} @if($order->getUser->lastname) {{ $order->getUser->lastname }} @endif</td>
 								<td>{{ getOrderType($order->o_type) }}</td>
 								<td>{{ $order->request_at }}</td>
-								<td>{{ number($order->total) }}</td>
+								<td>{{ number_format($order->total, 0, ',', '.') }}</td>
 								<td>
 									<a href="{{ url('/admin/order/'.$order->id.'/view') }}" class="btn btn-primary btn-sm">Abrir</a>
 								</td>

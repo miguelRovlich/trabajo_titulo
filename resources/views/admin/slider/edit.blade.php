@@ -39,7 +39,7 @@
 					<label for="icon" class="mtop16">Imagen Destacada:</label>
 					<div class="row">
 						<div class="col-md-4">
-							<img src="{{ url('/uploads/'.$slider->file_path.'/'.$slider->file_name) }}" class="img-fluid">
+							<img src="{{ url('/uploads/'.$slider->file_name) }}" class="img-fluid">
 						</div>
 					</div>
 

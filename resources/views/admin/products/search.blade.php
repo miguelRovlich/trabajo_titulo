@@ -61,7 +61,6 @@
 				<thead>
 					<tr>
 						<td>ID</td>
-						<td></td>
 						<td>Nombre</td>
 						<td>Categoria</td>
 						<td>Precio</td>
@@ -72,11 +71,6 @@
 					@foreach($products as $p)
 					<tr>
 						<td width="50">{{ $p->id }}</td>
-						<td width="64">
-							<a href="{{ url('/uploads/'.$p->file_path.'/'.$p->image) }}" data-fancybox="gallery">
-								<img src="{{ url('/uploads/'.$p->file_path.'/t_'.$p->image) }}" width="64">
-							</a>
-						</td>
 						<td>{{ $p->name }} @if($p->status == "0") <i class="fas fa-eraser" data-toggle="tooltip" data-placement="top" title="Estado: Borrador"></i> @endif</td>
 						<td>{{ $p->cat->name }} @if($p->subcategory_id != "0") <i class="fas fa-angle-double-right"></i> {{ $p->getSubcategory->name }} @endif</td>
 						<td>{{ $p->price }}</td>

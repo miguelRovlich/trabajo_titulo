@@ -86,7 +86,7 @@
 							@foreach($sliders as $slider)
 							<tr>
 								<td width="180">
-									<img src="{{ url('/uploads/'.$slider->file_path.'/'.$slider->file_name) }}" class="img-fluid">
+									<img src="{{ url('/uploads/'.$slider->file_name) }}" class="img-fluid">
 								</td>
 								<td>
 									<div class="slider_content">

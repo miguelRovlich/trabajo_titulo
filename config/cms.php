@@ -1,13 +1,13 @@
 <?php
 return [
 'name' => 'Nibble Electronica',
-'website' => 'http://127.0.0.1:8000',
+'website' => 'http://localhost:8000',
 'company_phone' => '22222222',
 'email_from' => 'noreply@nibble.cl',
 'maintenance_mode' => '0',
 'currency' => 'CLP',
 'shop_min_amount' => '100',
-'shipping_method' => '0',
+'shipping_method' => '2',
 'shipping_default_value' => '5000',
 'shipping_amount_min' => '500',
 'to_go' => '0',
@@ -22,8 +22,8 @@ return [
 'payment_method_credit_card' => '0',
 'products_per_page' => '5',
 'products_per_page_random' => '10',
-'server_uploads_paths' => 'C:\xampp\htdocs\madecms\public',
-'server_uploads_user_paths' => 'C:\xampp\htdocs\madecms\public',
-'server_webapp_path' => 'C:\xampp\htdocs\madecms\public',
+'server_uploads_paths' => 'C:\Users\Fco Javier\desktop\laravel\aaaaa',
+'server_uploads_user_paths' => 'C:\Users\Fco Javier\desktop\laravel\aaaaa',
+'server_webapp_path' => 'C:\Users\Fco Javier\desktop\laravel\aaaaa',
 ]
 ?>

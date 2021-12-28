@@ -18,7 +18,7 @@
 				</div>
 
 				<div class="inside">
-					{!! Form::open(['url' => '/admin/category/add/'.$module, 'files' => true]) !!}
+					{!! Form::open(['url' => '/admin/category/add/'.$module]) !!}
 					<label for="name">Nombre:</label>
 					<div class="input-group">
 						<span class="input-group-text" id="basic-addon1">
@@ -46,16 +46,6 @@
 							<i class="far fa-keyboard"></i>
 						</span>
 						{!! Form::select('module', getModulesArray(), $module, ['class' => 'form-select', 'disabled']) !!}
-					</div>
-
-
-					<label for="icon" class="mtop16">Ícono:</label>
-					<div class="form-file">
-					{!! Form::file('icon', ['class' => 'form-file-input', 'required','id' => 'customFile', 'accept' => 'image/*']) !!}
-					<label class="form-file-label" for="customFile">
-						<span class="form-file-text">Seleccionar Archivo...</span>
-						<span class="form-file-button">Buscar</span>
-					</label>
 					</div>
 
 					{!! Form::submit('Guardar', ['class' => 'btn btn-success mtop16']) !!}

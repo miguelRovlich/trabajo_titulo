@@ -63,7 +63,7 @@
 
 				<div class="inside">
 					@if($coverage->ctype == "0")
-					<p><strong>Tipo:</strong> Estado / Departamento</p>
+					<p><strong>Tipo:</strong> Region</p>
 					<p><strong>Nombre:</strong> {{ $coverage->name }} </p>
 					@endif
 					

@@ -66,7 +66,7 @@ function delete_object(e){
 	var path = this.getAttribute('data-path');
 	var url = base + '/' + path + '/' + object + '/'+ action;
 	if(action == "delete"){
-		mdalert({title: '¿Estas seguro de eliminar este objecto?', type: 'delete',  msg: 'Recuerda que esta acción enviara este elemento a la papelera o lo eliminara de forma definitiva.', actions: JSON.stringify([{url: url, name: 'Si, Eliminar', type: 'danger'}])});
+		mdalert({title: '¿Estas seguro de eliminar este objeto?', type: 'delete',  msg: 'Recuerda que esta acción enviara este elemento a la papelera o lo eliminara de forma definitiva.', actions: JSON.stringify([{url: url, name: 'Si, Eliminar', type: 'danger'}])});
 	}else{
 		mdalert({title: '¿Deseas restaurar este elemento?', type: 'restore', msg: 'Esta acción restaurara el elemento de la papelera de reciclaje.',actions: JSON.stringify([{url: url, name: 'Si, Restaurar', type: 'success'}])});
 	}

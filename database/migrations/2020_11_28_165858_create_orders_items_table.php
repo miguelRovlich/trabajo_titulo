@@ -18,8 +18,6 @@ class CreateOrdersItemsTable extends Migration
             $table->integer('user_id');
             $table->integer('order_id');
             $table->integer('product_id');
-            $table->integer('inventory_id');
-            $table->integer('variant_id')->nullable();
             $table->text('label_item')->nullable();
             $table->integer('quantity')->default(1);
             $table->integer('discount_status')->default(0);
