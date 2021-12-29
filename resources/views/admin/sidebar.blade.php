@@ -1,5 +1,8 @@
 <div class="sidebar shadow">
 	<div class="section-top">
+		<button class="btn btn-block btm-sm btn-danger">
+		<i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+		</button>
 		<div class="logo">
 			<img src="{{ url('static/images/logo.png') }}" class="img-fluid">
 		</div>
@@ -8,12 +11,6 @@
 			<span class="subtitle">Hola:</span>
 			<div class="name">
 				{{ Auth::user()->name }} {{ Auth::user()->lastname }}
-				<a href="{{ url('/logout') }}" data-toggle="tooltip" data-placement="top" title="Cerrar sesion">
-					<i class="fas fa-sign-out-alt"></i>
-				</a>
-				<a href="{{ url('/home') }}" data-toggle="tooltip" data-placement="top" title="Salir">
-					<i class="fas fa-sign-out-alt"></i>
-				</a>
 			</div>
 			<div class="email">{{ Auth::user()->email }}</div>
 		</div>
@@ -21,6 +18,11 @@
 
 	<div class="main">
 		<ul>
+			<li>
+				<a href="{{ url('/') }}" title="Volver al Home">
+					<i class="fas fa-arrow-left"></i> Volver al Home
+				</a>
+			</li>
 			<li>
 				<a href="{{ url('/admin') }}" class="lk-dashboard"><i class="fas fa-home"></i> Dashboard</a>
 			</li>

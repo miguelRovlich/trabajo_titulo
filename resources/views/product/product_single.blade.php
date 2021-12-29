@@ -54,9 +54,11 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="variants mtop16">
-									Disponibles: {{ $product->quantity }}
-									<p><strong>Precio: {{$product->price}}</strong></p>
-								
+									@if($product->quantity > 0)
+										<label>DISPONIBLES: {{ $product->quantity }}</label>
+									@else
+										<label class="text-danger"><i class="fa fa-wallet"></i> AGOTADO</label>
+									@endif
 								</div>
 
 								<div class="variants hidden btop1 ptop16 mtop16" id="variants_div">
