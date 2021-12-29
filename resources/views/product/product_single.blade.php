@@ -54,13 +54,11 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="variants mtop16">
-									Disponibles: {{ $product->quantity }}
-									<p><strong>Opciones del producto:</strong></p>
-									<ul id="inventory">
-										@foreach($product->getInventory as $inventory)
-										<li><a href="#" class="inventory" id="inventory_{{ $inventory->id }}" data-inventory-id="{{ $inventory->id }}">{{ $inventory->name }} - <span class="price">{{ Config::get('madecms.currency').number_format($inventory->price) }}</span></a></li>
-										@endforeach
-									</ul>
+									@if($product->quantity > 0)
+										<label>DISPONIBLES: {{ $product->quantity }}</label>
+									@else
+										<label class="text-danger"><i class="fa fa-wallet"></i> AGOTADO</label>
+									@endif
 								</div>
 
 								<div class="variants hidden btop1 ptop16 mtop16" id="variants_div">

@@ -344,3 +344,5 @@ function delete_object(e){
 		}
 	});
 }
+
+$('[data-toggle="tooltip"]').tooltip();
